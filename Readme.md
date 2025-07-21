@@ -1,61 +1,119 @@
-The CIM-Tuner Repo. is consists of Bottom-level CIMMA-Compiler (C) and Top-level Simulator (Python)
-The project is built under Unbuntu 22.04, gcc 11.4.0 and python 3.12.4.
-## 1.CIMMA-Compiler Setup
-To start CIM-Tuner Compiler, first compile the CIMMA-Compiler: 
-```bash
-cd ./evacim/CIMMA_Compiler
-```
-Then compile the C program:
-```bash
-make
-```
+# CIM-Tuner Repository
 
-Then, you can run the try.py in ./evacim/CIMMA_Compiler to check the result.
+This repository consists of:
+- **CIMMA-Compiler** (C-based bottom-level compiler)
+- **Simulator** (Python-based top-level simulator)
 
-For instruction visualization, set the 12 th row in compiler_count.c:
-```c
-#define WRITE_INST 1
-```
-Then, make again and run try.py. The complied instructions are wrote to ./Result/inst.txt.
-For faster running, it is recommended to set WRITE_INST to 0 when doing top-level simulations.
+## System Requirements
+- **OS**: Ubuntu 22.04
+- **Compiler**: gcc 11.4.0
+- **Python**: 3.12.4
 
-## 2.Simulator and Evaluation Setup
-To start CIM-Tuner Simulator, back to the CIM-Tuner root:
-```bash
+---
+
+## 1. CIMMA-Compiler Setup
+
+### Compilation Steps
+1. Navigate to the compiler directory:
+   bash
+   cd ./evacim/CIMMA_Compiler
+
+   
+2. Compile the C program:
+   bash
+   make
+
+
+### Testing & Verification
+- Run the test script to validate compilation:
+  bash
+   python3 try.py
+
+
+### Instruction Visualization
+1. Enable instruction writing in `compiler_count.c`:
+   c
+   #define WRITE_INST 1  // Enable instruction logging
+
+
+2. Recompile and run:
+   bash
+   make && python3 try.py
+
+   
+   Compiled instructions will be saved to `./Result/inst.txt`.
+
+> **Note**: For performance during top-level simulations, disable visualization by setting `WRITE_INST` to `0`.
+
+---
+
+## 2. Simulator and Evaluation Setup
+
+### Basic Operation
+Return to the root directory:
+bash
 cd ../..
-```
 
-Then you can run simple operator on accelerator by:
-```bash
-python3 -m evacim.sim --cim ./cim_config/FPCIM@ISSCC23.cfg --para 25.6 2 2 16 128 64 --operator 256 512 256 --dataflow R_WP_PF
-```
-Run this command for the parameters meaning at different position: 
-```bash
+
+Run a single accelerator operation:
+bash
+python3 -m evacim.sim \
+    --cim ./cim_config/FPCIM@ISSCC23.cfg \
+    --para 25.6 2 2 16 128 64 \
+    --operator 256 512 256 \
+    --dataflow R_WP_PF
+
+
+### Parameter Reference
+View all parameter options:
+bash
 python3 -m evacim.sim --help
-``` 
 
-Also the whole model evaluation can run by:
-```bash
-python3 -m evacim.sw_func --cim ./cim_config/FPCIM@ISSCC23.cfg --paras 25.6 2 2 16 64 64 --model nn_config/bert_base_sl64.csv --target th
-```
 
-## 3.Hardware-Mapping Co-exploration
-For operator-level exploration, run:
-```bash
+### Full Model Evaluation
+Run an end-to-end evaluation:
+bash
+python3 -m evacim.sw_func \
+    --cim ./cim_config/FPCIM@ISSCC23.cfg \
+    --paras 25.6 2 2 16 64 64 \
+    --model nn_config/bert_base_sl64.csv \
+    --target th
+
+
+---
+
+## 3. Hardware-Mapping Co-exploration
+
+### Operator-Level Exploration
+bash
 python3 -m experiments.cim_sa_gli
-```
-This script explores the accelerator architecture of FPCIM@ISSCC23 under fixed operator and dataflow. The optimal target is throughput and area constraint is 5 mm^2. The annealing progress is shown: 
-![single_operator_sa](./plot/sa_gli.png)
 
-For network-level simulated annealing, run:
-```bash
+- **Purpose**: Optimize accelerator architecture (FPCIM@ISSCC23) for fixed operator/dataflow
+- **Target**: Maximize throughput with ¡Ü5 mm? area constraint
+- **Output**:  
+  ![Single Operator SA](./plot/sa_gli.png)
+
+### Network-Level Exploration
+bash
 python3 -m experiments.cim_sa_model
-```
-This script explores both the architecture and mapping strategies of FPCIM based accelerator on Bert_base. The optimal target is energy efficiency and area constraint is 5 mm^2. For other configurations, directly revise the script. The example annealing is shown:
-![model_sa](./plot/sa_model.png)
 
-For other experiments demonstrated in the paper, see ./experiments and ./plot
+- **Purpose**: Joint optimization of architecture and mapping strategies for BERT-base
+- **Target**: Maximize energy efficiency with ¡Ü5 mm? area constraint
+- **Output**:  
+  ![Model SA](./plot/sa_model.png)
 
+### Additional Experiments
+- View all paper experiments in `./experiments`
+- Access result visualizations in `./plot`
 
+---
 
+## Troubleshooting Tips
+- If encountering Git push errors (`non-fast-forward`), always pull remote changes first:
+  bash
+  git pull origin main
 
+- Reset to remote state if needed:
+  bash
+  git fetch origin
+  git reset --hard origin/main
