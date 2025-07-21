@@ -1,0 +1,13 @@
+###### ACC Parameters ######
+cim type:   TranCIM
+bus_width:  51.2
+macros_row: 2
+macros_col: 1
+scr:        16
+is_size:    4
+os_size:    64
+compute_allbank_power: 19.98048780487805
+write_onerow_power: 13.824
+static_power: 1.4372
+memory_array_ratio: 0.022491090253325772
+best=3.3960619204025697, area=2999161.4789175843, count=459

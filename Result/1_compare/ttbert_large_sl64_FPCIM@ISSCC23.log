@@ -1,0 +1,13 @@
+###### ACC Parameters ######
+cim type:   FPCIM
+bus_width:  25.6
+macros_row: 8
+macros_col: 2
+scr:        16
+is_size:    1024
+os_size:    8
+compute_allbank_power: 13.128205128205128
+write_onerow_power: 17.28
+static_power: 1.4372
+memory_array_ratio: 0.14376996805111822
+best=1393.6569565098243, area=4866476.902267025, count=459
