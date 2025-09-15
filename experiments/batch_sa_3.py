@@ -56,8 +56,11 @@ for mac in macro:
             epoch = 1, 
         )
 
+        import time
         sa1.run(write_log=True, logname="./Result/ee"+flist+"_"+mac+"_fix.log")
+        print(f"{flist}_{mac}_ee_running start at {time.time()}", flush=True)
         sa2.run(write_log=True, logname="./Result/ee"+flist+"_"+mac+".log")
+        print(f"{flist}_{mac}_ee_running end at {time.time()}", flush=True)
         
     if tt:
         sa3 = SimulateAnnealing_CIMACC_on_model(
@@ -82,7 +85,9 @@ for mac in macro:
         )
 
         sa3.run(write_log=True, logname="./Result/tt"+flist+"_"+mac+"_fix.log")
+        print(f"{flist}_{mac}_tt_running start at {time.time()}", flush=True)
         sa4.run(write_log=True, logname="./Result/tt"+flist+"_"+mac+".log")   
+        print(f"{flist}_{mac}_tt_running end at {time.time()}", flush=True)
 
 
 

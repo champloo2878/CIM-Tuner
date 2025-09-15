@@ -9,7 +9,7 @@ from evacim.sw_func import get_random_bool, func_cima, func_model, func_model_fi
 
 from experiments.cim_sa_model import SimulateAnnealing_CIMACC_on_model
 
-flist = "bert_large_sl512"
+flist = "resnet_18"
 
 
 macro = [
@@ -61,7 +61,7 @@ for mac in macro:
         print(f"{flist}_{mac}_ee_running start at {time.time()}", flush=True)
         sa2.run(write_log=True, logname="./Result/ee"+flist+"_"+mac+".log")
         print(f"{flist}_{mac}_ee_running end at {time.time()}", flush=True)
-        
+
     if tt:
         sa3 = SimulateAnnealing_CIMACC_on_model(
             func_model_fix_dataflow, 
@@ -88,6 +88,5 @@ for mac in macro:
         print(f"{flist}_{mac}_tt_running start at {time.time()}", flush=True)
         sa4.run(write_log=True, logname="./Result/tt"+flist+"_"+mac+".log")   
         print(f"{flist}_{mac}_tt_running end at {time.time()}", flush=True)
-
 
 

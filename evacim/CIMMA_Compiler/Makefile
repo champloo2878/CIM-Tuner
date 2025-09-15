@@ -14,13 +14,17 @@ OBJECTS=$(SOURCES:.c=.o)
 TARGET=compiler_count
 
 # Default target
-all: $(TARGET)
+all: create_dirs $(TARGET)
+
+# Create necessary directories
+create_dirs:
+	mkdir -p ./Result/
 
 # Linking the target executable from the object files
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ -lm
 
-# # Compiling source files into object files
+# Compiling source files into object files
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 

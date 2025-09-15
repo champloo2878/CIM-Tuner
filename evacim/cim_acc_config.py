@@ -81,19 +81,19 @@ class CIMACC:
 
     
     def printf(self, power_print = 0):
-        print("###### ACC Parameters ######")
-        print("cim type:   ", self.cim.name)
-        print("bus_width:  ", self.bus_width)
-        print("macros_row: ", self.macro_row)
-        print("macros_col: ", self.macro_col)
-        print("scr:        ", self.SCR)
-        print("is_size:    ", self.is_size)
-        print("os_size:    ", self.os_size)
+        print("###### ACC Parameters ######", flush=True)
+        print("cim type:   ", self.cim.name, flush=True)
+        print("bus_width:  ", self.bus_width, flush=True)
+        print("macros_row: ", self.macro_row, flush=True)
+        print("macros_col: ", self.macro_col, flush=True)
+        print("scr:        ", self.SCR, flush=True)
+        print("is_size:    ", self.is_size, flush=True)
+        print("os_size:    ", self.os_size, flush=True)
         if power_print:
-            print(self.cim.compute_allbank_power)
-            print(self.cim.write_onerow_power)
-            print(self.cim.static_power)
-            print(self.cim.memory_array_ratio)
+            print(self.cim.compute_allbank_power, flush=True)
+            print(self.cim.write_onerow_power, flush=True)
+            print(self.cim.static_power, flush=True)
+            print(self.cim.memory_array_ratio, flush=True)
 
     def write_log(self, filename):
         with open(filename, 'w') as f:

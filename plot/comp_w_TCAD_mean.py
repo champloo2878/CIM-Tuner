@@ -3,12 +3,13 @@ import numpy as np
 
 metrics = ['ee','tt']
 networks = [
+    'resnet_18',
     'bert_base_sl64',
     'bert_base_sl512',
     'bert_large_sl64',
     'bert_large_sl512',
+    'vit_large_sl197',
     'gpt2_large_sl8',
-    'vit_large_sl197'
 ]
 
 macros = [

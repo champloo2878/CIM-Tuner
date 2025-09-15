@@ -1,0 +1,13 @@
+###### ACC Parameters ######
+cim type:   LccCIM
+bus_width:  25.6
+macros_row: 1
+macros_col: 9
+scr:        4
+is_size:    256
+os_size:    128
+compute_allbank_power: 6.1575466025255565
+write_onerow_power: 3.456
+static_power: 1.4372
+memory_array_ratio: 0.06498819914499465
+best=366.89635483048687, area=4670778.60245675, count=459

@@ -116,7 +116,7 @@ class SimulateAnnealing_CIMACC_on_model:
             self.history['f'].append(ft)
             self.history['T'].append(self.T)
             self.history['c'].append(count)
-            print(ft, self.T,'\tidx:',idx, self.accs[idx].macro_row, self.accs[idx].macro_col, self.accs[idx].SCR, self.accs[idx].is_size, self.accs[idx].os_size)
+            print(ft, self.T,'\tidx:',idx, self.accs[idx].macro_row, self.accs[idx].macro_col, self.accs[idx].SCR, self.accs[idx].is_size, self.accs[idx].os_size, flush=True)
             # cooling
             self.T = self.T * self.alpha
             count += 1
@@ -130,7 +130,7 @@ class SimulateAnnealing_CIMACC_on_model:
             self.accs[idx].write_log(logname)
             with open(logname, 'a') as f:
                 f.write(f"best={f_best}, area={area}, count={count}")
-        print(f"best={f_best}, area={area}", count)
+        print(f"best={f_best}, area={area}", count, flush=True)
 
 if __name__ == '__main__':
     

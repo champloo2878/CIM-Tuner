@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from evacim import cim_acc_config as ccfg
 from evacim import nn_config as ncfg
 from evacim import area_modeling
+import time
 
 from evacim.sw_func import get_random_bool, func_cima, func_model, func_model_fix_dataflow
 
@@ -56,9 +57,12 @@ for mac in macro:
             epoch = 1, 
         )
 
+        import time
         sa1.run(write_log=True, logname="./Result/ee"+flist+"_"+mac+"_fix.log")
+        print(f"{flist}_{mac}_ee_running start at {time.time()}", flush=True)
         sa2.run(write_log=True, logname="./Result/ee"+flist+"_"+mac+".log")
-        
+        print(f"{flist}_{mac}_ee_running end at {time.time()}", flush=True)
+
     if tt:
         sa3 = SimulateAnnealing_CIMACC_on_model(
             func_model_fix_dataflow, 
@@ -80,9 +84,10 @@ for mac in macro:
             alpha=0.99,
             epoch = 1, 
         )
-
         sa3.run(write_log=True, logname="./Result/tt"+flist+"_"+mac+"_fix.log")
+        print(f"{flist}_{mac}_tt_running start at {time.time()}", flush=True)
         sa4.run(write_log=True, logname="./Result/tt"+flist+"_"+mac+".log")   
+        print(f"{flist}_{mac}_tt_running end at {time.time()}", flush=True)
 
 
 
