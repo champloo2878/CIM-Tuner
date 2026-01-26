@@ -1,4 +1,4 @@
-# CIM-Tuner Repository
+# CIM-Tuner: Balancing the Compute and Storage Capacity of SRAM-CIM Accelerator via Hardware-mapping Co-exploration
 
 This repository consists of:
 - **CIMMA-Compiler** (C-based bottom-level compiler)
