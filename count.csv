@@ -1,2 +1,0 @@
-bus_width,al,pc,scr,is_depth,os_depth,freq,operation,dim1,dim2,dim3,data_stream,Lin,Linp,Lwt,Lwtp,Cmpfis_aor,Cmpfis_tos,Cmpfis_aos,Cmpfis_ptos,Cmpfis_paos,Cmpfgt_aor,Cmpfgt_tos,Cmpfgt_aos,Cmpfgt_ptos,Cmpfgt_paos,Cmpfgtp,Lpenalty,Nop,Nop_w_rd,IS_reward,L2_reward,Fussion
-409,256,16,16,512,1024,500,proj,256,512,256,wspp,512,2048,2048,0,0,1024,0,3072,4096,0,0,0,0,0,0,0,8,4096,7680,0,0

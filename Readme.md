@@ -1,17 +1,23 @@
 # CIM-Tuner: Balancing the Compute and Storage Capacity of SRAM-CIM Accelerator via Hardware-mapping Co-exploration
 
-This repository consists of:
-- **CIMMA-Compiler** (C-based bottom-level compiler)
-- **Simulator** (Python-based top-level simulator)
+![Single Operator SA](./plot/Overview.png)
 
-## System Environments
-- Ubuntu 22.04
-- gcc 11.4.0
-- python 3.12.4
+## Introduction
+
+CIM-Tuner is a hardware-mapping co-exploration framework designed to balance the compute and storage capacity of SRAM-based Compute-in-Memory (CIM) accelerators. It provides a comprehensive simulation and optimization environment for exploring CIM accelerator architectures and their mapping strategies to deep neural networks.
+
+### Project Structure
+
+- **cim_config**: Configuration files for CIM simulation, implementing the Matrix Abstraction for generalized CIM Macro modeling.
+- **evacim**: Core simulator scripts, including the CIMMA Compiler, RTL and area/power modeling components.
+- **experiments**: Experimental scripts featuring heuristic-pruned simulated annealing algorithms for design space exploration.
+- **nn_config**: Neural network configuration files.
+- **Result**: Log files and experimental results.
+- **plot**: Visualization plots and figures.
 
 ---
 
-## 1. CIMMA-Compiler Setup
+## 1. CIMMA Compiler Setup
 
 ### Compilation Steps
 1. Navigate to the compiler directory:
@@ -25,10 +31,11 @@ make
 ```
 
 ### Testing & Verification
-- Run the test script to validate compilation:
+- Run the test script to validate compilation: 
 ```bash
 python3 try.py
 ```
+The expected output is a list of instruction counts for various CIM accelerator operations.
 
 ### Instruction Visualization
 1. Enable instruction writing in `compiler_count.c`:
@@ -89,7 +96,7 @@ python3 -m evacim.sw_func \
 ```bash
 python3 -m experiments.cim_sa_gli
 ```
-This script explores the accelerator architecture of FPCIM@ISSCC23 under fixed operator and dataflow. The optimal target is throughput and area constraint is 5 mm^2. The annealing progress is shown:
+This script explores the accelerator architecture of FPCIM@ISSCC23 under fixed operator and dataflow (could be directly modified in ./experiments/cim_sa_gli.py's main function). The optimal target is throughput and area constraint is 5 mm^2. The annealing progress is shown:
 ![Single Operator SA](./plot/sa_gli.png)
 
 ### Network-Level Exploration
@@ -103,3 +110,7 @@ This script explores both the architecture and mapping strategies of FPCIM based
 - View all paper experiments in `./experiments`
 - Access result visualizations in `./plot`
 
+## If you use this project in your research, please cite our paper:
+```
+J. Chen, et al. "CIM-Tuner: Balancing the Compute and Storage Capacity of SRAM-CIM Accelerator via Hardware-mapping Co-exploration" 2026 Design, Automation & Test in Europe Conference (DATE). IEEE, 2026.
+```
