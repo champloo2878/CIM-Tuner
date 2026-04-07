@@ -1,6 +1,5 @@
-# CIM-Tuner: Balancing the Compute and Storage Capacity of SRAM-CIM Accelerator via Hardware-mapping Co-exploration
-
-![Single Operator SA](./plot/Overview.png)
+# CIM-Tuner (DATE '26) 
+Balancing the Compute and Storage Capacity of SRAM-CIM Accelerator via Hardware-mapping Co-exploration
 
 ## Introduction
 
